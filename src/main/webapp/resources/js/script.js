@@ -37,6 +37,6 @@ function appendRow() {
     rowItemElementDiv.appendChild(labelFees);
     rowItemElementDiv.appendChild(inputFees);
 
-    let firstRow = document.getElementById('first-row');
-    firstRow.appendChild(rowItemElementDiv);
+    let stockInfoRow = document.getElementById('stock-info-row');
+    stockInfoRow.appendChild(rowItemElementDiv);
 }

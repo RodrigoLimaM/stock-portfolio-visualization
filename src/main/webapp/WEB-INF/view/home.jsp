@@ -14,26 +14,14 @@
     <head>
         <title>Home</title>
     </head>
-    <body>
+    <body onload="appendRow()">
         <header>
 
         </header>
         <div class="container">
             <%--@elvariable id="stockInfo" type="br.com.stockportfoliovisualization.model.StockInfo"--%>
             <form:form servletRelativeAction="/portfolio" method="GET">
-                <div class="stock-info-row">
-                    <div id="first-row">
-                        <div class="stock-info-row-item">
-                            <label class="col-sm-auto">Stock Symbol</label>
-                            <input type='text' name='stock' class='form-control text-center'>
-
-                            <label class="col-sm-auto">Quantity</label>
-                            <input type='text' name='quantity' class='form-control text-center'>
-
-                            <label class="col-sm-auto">Brokerage Fees</label>
-                            <input type='text' name='fees' class='form-control text-center'>
-                        </div>
-                    </div>
+                <div class="stock-info-rows" id="stock-info-row">
                 </div>
                 <div class="add-row-button">
                     <button type="button" onclick="appendRow()" value="Add Row" class="btn btn-success btn-lg btn-block">Add stock</button>
