@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping("/portfolio")
 public class PortfolioController {
 
+    //TODO
     @GetMapping
     public String getPortfolioValues(@RequestParam("stock") List<String> stocks) {
         String stockNames = "";

@@ -24,7 +24,14 @@
                 <div class="stock-info-row">
                     <div id="first-row">
                         <div class="stock-info-row-item">
+                            <label class="col-sm-auto">Stock Symbol</label>
                             <input type='text' name='stock' class='form-control text-center'>
+
+                            <label class="col-sm-auto">Quantity</label>
+                            <input type='text' name='quantity' class='form-control text-center'>
+
+                            <label class="col-sm-auto">Brokerage Fees</label>
+                            <input type='text' name='fees' class='form-control text-center'>
                         </div>
                     </div>
                 </div>
