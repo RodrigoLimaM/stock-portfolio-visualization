@@ -36,9 +36,9 @@
                     </div>
                 </div>
                 <div class="add-row-button">
-                    <button type="button" onclick="appendRow()" value="Add Row" class="btn btn-dark btn-lg btn-block">Add stock</button>
+                    <button type="button" onclick="appendRow()" value="Add Row" class="btn btn-success btn-lg btn-block">Add stock</button>
                 </div>
-                <button type="submit" class="btn btn-dark btn-lg btn-block">Next</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Next</button>
             </form:form>
         </div>
     </body>
