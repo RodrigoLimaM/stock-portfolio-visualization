@@ -8,6 +8,8 @@ function appendRow() {
     inputStock.className = 'form-control text-center';
     inputStock.name = 'stock';
     inputStock.type = 'text';
+    inputStock.maxLength = 6;
+    inputStock.placeholder = 'ex: ITSA3';
 
     let labelQuantity = document.createElement('label');
     labelQuantity.textContent = 'Quantity';
@@ -16,16 +18,18 @@ function appendRow() {
     let inputQuantity = document.createElement('input');
     inputQuantity.className = 'form-control text-center';
     inputQuantity.name = 'quantity';
-    inputQuantity.type = 'text';
+    inputQuantity.type = 'number';
 
     let labelFees = document.createElement('label');
     labelFees.textContent = 'Brokerage Fees';
-    labelFees.className = 'col-sm-auto'
+    labelFees.className = 'col-sm-auto';
 
     let inputFees = document.createElement('input');
     inputFees.className = 'form-control text-center';
     inputFees.name = 'fees';
-    inputFees.type = 'text';
+    inputFees.type = 'number';
+    inputFees.step = '0.01';
+    inputFees.placeholder = 'ex: 10.98';
 
     let rowItemElementDiv = document.createElement("div");
     rowItemElementDiv.className = 'stock-info-row-item';

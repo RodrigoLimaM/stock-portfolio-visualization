@@ -10,13 +10,15 @@
 
 <!DOCTYPE html>
 <html>
-    <script></script>
     <head>
         <title>Home</title>
     </head>
     <body onload="appendRow()">
         <header>
-
+            <div class="topnav">
+                <a class="active" href="/">Your Stock Portfolio</a>
+                <a href="/">Logout</a>
+            </div>
         </header>
         <div class="container">
             <%--@elvariable id="stockInfo" type="br.com.stockportfoliovisualization.model.StockInfo"--%>
