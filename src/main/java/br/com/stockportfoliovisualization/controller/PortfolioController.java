@@ -1,25 +1,28 @@
 package br.com.stockportfoliovisualization.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import br.com.stockportfoliovisualization.service.PortfolioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/portfolio")
 public class PortfolioController {
 
+    @Autowired
+    PortfolioService portfolioService;
+
     //TODO
-    @GetMapping
-    public String getPortfolioValues(@RequestParam("stock") List<String> stocks) {
-        String stockNames = "";
+    @PostMapping
+    public String getPortfolioValues(@RequestParam("stock") String[] stocks,
+                                     @RequestParam("stockValue") BigDecimal[] stockValues,
+                                     @RequestParam("quantity") Integer[] quantities,
+                                     @RequestParam("fees") BigDecimal[] fees) {
 
-        for (String stock : stocks) {
-            stockNames += stock +" ";
-        }
-
-        return stockNames.trim();
+        return portfolioService.calculatePortfolio(stocks, stockValues, quantities, fees);
     }
 }

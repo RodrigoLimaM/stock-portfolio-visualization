@@ -22,7 +22,7 @@
         </header>
         <div class="container">
             <%--@elvariable id="stockInfo" type="br.com.stockportfoliovisualization.model.StockInfo"--%>
-            <form:form servletRelativeAction="/portfolio" method="GET">
+            <form:form servletRelativeAction="/portfolio" method="POST">
                 <div class="stock-info-rows" id="stock-info-row">
                 </div>
                 <div class="add-row-button">
