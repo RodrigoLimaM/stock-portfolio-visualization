@@ -18,11 +18,11 @@ public class PortfolioController {
 
     //TODO
     @PostMapping
-    public String getPortfolioValues(@RequestParam("stock") String[] stocks,
-                                     @RequestParam("stockValue") BigDecimal[] stockValues,
-                                     @RequestParam("quantity") Integer[] quantities,
-                                     @RequestParam("fees") BigDecimal[] fees) {
+    public String savePortfolioInfo(@RequestParam("stock") String[] stocks,
+                                    @RequestParam("stockValue") BigDecimal[] stockValues,
+                                    @RequestParam("quantity") Integer[] quantities,
+                                    @RequestParam("fees") BigDecimal[] fees) {
 
-        return portfolioService.calculatePortfolio(stocks, stockValues, quantities, fees);
+        return portfolioService.save(stocks, stockValues, quantities, fees);
     }
 }

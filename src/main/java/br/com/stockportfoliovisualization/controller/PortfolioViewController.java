@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HomeController {
+public class PortfolioViewController {
 
     @RequestMapping
-    public ModelAndView home() {
-        return new ModelAndView("home");
+    public ModelAndView getPorfolioForm() {
+        return new ModelAndView("portfolio-form");
     }
 }

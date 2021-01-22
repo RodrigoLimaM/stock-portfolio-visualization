@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class PortfolioService {
 
-    public String calculatePortfolio(String[] stocks, BigDecimal[] stockValues, Integer[] quantities, BigDecimal[] fees) {
+    public String save(String[] stocks, BigDecimal[] stockValues, Integer[] quantities, BigDecimal[] fees) {
 
         return buildStockInfos(stocks, stockValues, quantities, fees).toString();
     }
