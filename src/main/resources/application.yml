@@ -6,3 +6,6 @@ spring:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
+  data:
+    mongodb:
+      uri: mongodb+srv://root:${MONGO_PASSWORD}@cluster0.gkat2.gcp.mongodb.net/stock-portfolio-visualization?retryWrites=true&w=majority

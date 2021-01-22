@@ -1,4 +1,4 @@
-package br.com.stockportfoliovisualization.model.in;
+package br.com.stockportfoliovisualization.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

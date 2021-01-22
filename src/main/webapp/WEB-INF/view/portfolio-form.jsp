@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
+        <title>Your Stock Porftolio</title>
     </head>
     <body onload="appendRow()">
         <header>

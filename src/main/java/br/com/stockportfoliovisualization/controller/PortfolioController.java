@@ -2,27 +2,35 @@ package br.com.stockportfoliovisualization.controller;
 
 import br.com.stockportfoliovisualization.service.PortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 
-@RestController
+@Controller
 @RequestMapping("/portfolio")
 public class PortfolioController {
 
     @Autowired
     PortfolioService portfolioService;
 
+    @GetMapping
+    public ModelAndView getPortfolioForm() {
+        return new ModelAndView("portfolio-form");
+    }
+
     //TODO
     @PostMapping
-    public String savePortfolioInfo(@RequestParam("stock") String[] stocks,
+    public ModelAndView savePortfolioInfo(@RequestParam("stock") String[] stocks,
                                     @RequestParam("stockValue") BigDecimal[] stockValues,
                                     @RequestParam("quantity") Integer[] quantities,
                                     @RequestParam("fees") BigDecimal[] fees) {
 
-        return portfolioService.save(stocks, stockValues, quantities, fees);
+        return new ModelAndView("home")
+                .addObject("portfolioInfo", portfolioService.save(stocks, stockValues, quantities, fees));
     }
 }
