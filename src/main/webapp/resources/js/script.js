@@ -14,6 +14,7 @@ function appendRow() {
     inputStock.type = 'text';
     inputStock.maxLength = 6;
     inputStock.placeholder = 'ex: ITSA3';
+    inputStock.required = true;
 
     let labelStockValue = document.createElement('label');
     labelStockValue.textContent = 'Stock Value';
@@ -25,6 +26,7 @@ function appendRow() {
     inputStockValue.type = 'number';
     inputStockValue.step = '0.01';
     inputStockValue.placeholder = 'ex: 10,98';
+    inputStockValue.required = true;
 
     inputStockValue.addEventListener('keyup', function(){
         validateDecimalPlaces(this);
@@ -38,6 +40,7 @@ function appendRow() {
     inputQuantity.className = 'form-control text-center';
     inputQuantity.name = 'quantity';
     inputQuantity.type = 'number';
+    inputQuantity.required = true;
 
     let labelFees = document.createElement('label');
     labelFees.textContent = 'Brokerage Fees';
@@ -49,6 +52,7 @@ function appendRow() {
     inputFees.type = 'number';
     inputFees.step = '0.01';
     inputFees.placeholder = 'ex: 10,98';
+    inputFees.required = true;
 
     inputFees.addEventListener('keyup', function(){
         validateDecimalPlaces(this);
