@@ -38,6 +38,9 @@
                         <input required="true" name="password" type="password" class="form-control text-center"/>
                     </div>
                     <button type="submit" class="btn btn-success btn-lg btn-block">Sign Up</button>
+                    <c:if test="${error ne null}">
+                        ${error }
+                    </c:if>
                 </form:form>
             </div>
         </div>
