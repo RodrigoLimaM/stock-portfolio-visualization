@@ -26,7 +26,7 @@
                 <%--@elvariable id="userDTO" type="br.com.stockportfoliovisualization.model.UserDTO"--%>
                 <form:form action="${s:mvcUrl('RC#registerUser').build()}" method="POST" modelAttribute="userDTO">
                     <div class="form-group">
-                        <label class="col-sm-auto">Name</label>
+                        <label class="col-sm-auto">Nome</label>
                         <input required="true" name="name" type="text" class="form-control text-center"/>
                     </div>
                     <div class="form-group">
@@ -34,10 +34,10 @@
                         <input required="true" name="email" type="email" class="form-control text-center"/>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-auto">Password</label>
+                        <label class="col-sm-auto">Senha</label>
                         <input required="true" name="password" type="password" class="form-control text-center"/>
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Sign Up</button>
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Cadastrar</button>
                     <c:if test="${error ne null}">
                         ${error }
                     </c:if>

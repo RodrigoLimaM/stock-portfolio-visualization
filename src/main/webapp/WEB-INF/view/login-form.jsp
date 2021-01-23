@@ -28,16 +28,16 @@
                         <input required="true" name="username" type="email" class="form-control text-center"/>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-auto">Password</label>
+                        <label class="col-sm-auto">Senha</label>
                         <input required="true" name="password" type="password" class="form-control text-center"/>
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Sign In</button>
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Entrar</button>
                 </form:form>
                 <form:form servletRelativeAction="/register" method="GET">
-                    <button type="submit" class="btn btn-outline-success btn-lg btn-block">Sign Up</button>
+                    <button type="submit" class="btn btn-outline-success btn-lg btn-block">Cadastrar</button>
                 </form:form>
                 <c:if test="${ param.error ne null}">
-                    <div class="login-error">Invalid username/password</div>
+                    <div class="login-error">Email/Senha inválida</div>
                 </c:if>
             </div>
         </div>

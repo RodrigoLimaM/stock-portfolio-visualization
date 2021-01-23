@@ -18,7 +18,7 @@
     <header>
         <div class="topnav">
             <a class="active" href="/">Your Stock Portfolio</a>
-            <a href="/logout">Logout</a>
+            <a href="/logout">Sair</a>
         </div>
     </header>
         <div class="container">

@@ -18,7 +18,7 @@
         <header>
             <div class="topnav">
                 <a class="active" href="/">Your Stock Portfolio</a>
-                <a href="/logout">Logout</a>
+                <a href="/logout">Sair</a>
             </div>
         </header>
         <div class="container total-center">
@@ -27,9 +27,9 @@
                 <div class="stock-info-rows" id="stock-info-row">
                 </div>
                 <div class="add-row-button">
-                    <button type="button" onclick="appendRow()" value="Add Row" class="btn btn-success btn-lg btn-block">Add stock</button>
+                    <button type="button" onclick="appendRow()" value="Add Row" class="btn btn-outline-success btn-lg btn-block">+1</button>
                 </div>
-                <button type="submit" class="btn btn-success btn-lg btn-block">Next</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Salvar</button>
             </form:form>
         </div>
     </body>

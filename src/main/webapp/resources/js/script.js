@@ -5,7 +5,7 @@ function validateDecimalPlaces(inputStockValue) {
 function appendRow() {
 
     let labelStock = document.createElement('label');
-    labelStock.textContent = 'Stock Symbol';
+    labelStock.textContent = 'Código da ação';
     labelStock.className = 'col-sm-auto'
 
     let inputStock = document.createElement('input');
@@ -17,7 +17,7 @@ function appendRow() {
     inputStock.required = true;
 
     let labelStockValue = document.createElement('label');
-    labelStockValue.textContent = 'Stock Purchase Value';
+    labelStockValue.textContent = 'Valor de compra';
     labelStockValue.className = 'col-sm-auto'
 
     let inputStockPurchaseValue = document.createElement('input');
@@ -33,7 +33,7 @@ function appendRow() {
     })
 
     let labelQuantity = document.createElement('label');
-    labelQuantity.textContent = 'Quantity';
+    labelQuantity.textContent = 'Quantidade';
     labelQuantity.className = 'col-sm-auto'
 
     let inputQuantity = document.createElement('input');
@@ -43,7 +43,7 @@ function appendRow() {
     inputQuantity.required = true;
 
     let labelFees = document.createElement('label');
-    labelFees.textContent = 'Brokerage Fees';
+    labelFees.textContent = 'Taxas';
     labelFees.className = 'col-sm-auto';
 
     let inputFees = document.createElement('input');
