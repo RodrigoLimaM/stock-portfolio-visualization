@@ -17,7 +17,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests(requests -> requests.antMatchers("/resources/**").permitAll().anyRequest().authenticated());
+        http.authorizeRequests(requests -> requests.antMatchers("/resources/**")
+                .permitAll()
+                .antMatchers("/register/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated());
         http.formLogin()
                 .loginPage("/login-form")
                 .defaultSuccessUrl("/portfolio")

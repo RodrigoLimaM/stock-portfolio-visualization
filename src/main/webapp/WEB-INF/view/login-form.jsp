@@ -14,7 +14,7 @@
 <head>
     <title>Home</title>
 </head>
-    <body onload="appendRow()">
+    <body>
         <header>
             <div class="topnav">
                 <a class="active" href="/">Your Stock Portfolio</a>
@@ -31,7 +31,10 @@
                         <label class="col-sm-auto">Password</label>
                         <input name="password" type="password" class="form-control text-center"/>
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Sign In</button>
+                </form:form>
+                <form:form servletRelativeAction="/register" method="GET">
+                    <button type="submit" class="btn btn-outline-success btn-lg btn-block">Sign Up</button>
                 </form:form>
                 <c:if test="${ param.error ne null}">
                     <div class="login-error">Invalid username/password</div>

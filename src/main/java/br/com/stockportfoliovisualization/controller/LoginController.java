@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/login-form")
 public class LoginController {
 
-    @RequestMapping
+    @GetMapping
     public ModelAndView loginForm() {
-        return new ModelAndView("login");
+        return new ModelAndView("login-form");
     }
 
 }

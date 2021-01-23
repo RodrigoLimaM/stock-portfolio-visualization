@@ -14,7 +14,7 @@
 <head>
     <title>Home</title>
 </head>
-    <body onload="appendRow()">
+    <body>
     <header>
         <div class="topnav">
             <a class="active" href="/">Your Stock Portfolio</a>

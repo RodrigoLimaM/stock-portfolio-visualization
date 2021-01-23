@@ -3,6 +3,7 @@ package br.com.stockportfoliovisualization.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -19,6 +20,7 @@ import java.util.List;
 @Getter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class UserPortfolio implements UserDetails {
 
@@ -26,11 +28,13 @@ public class UserPortfolio implements UserDetails {
 
     private String password;
 
+    private String name;
+
     private List<StockInfo> stockInfos;
 
     @CreatedDate
     @Field(name = "creation_date")
-    private final LocalDateTime creationDate;
+    private LocalDateTime creationDate;
 
     @LastModifiedDate
     @Field(name = "update_date")
