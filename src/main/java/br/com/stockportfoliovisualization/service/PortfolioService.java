@@ -16,15 +16,16 @@ public class PortfolioService {
     @Autowired
     PortfolioRepository portfolioRepository;
 
-    public UserPortfolio save(String[] stocks, BigDecimal[] stockValues, Integer[] quantities, BigDecimal[] fees) {
+    public UserPortfolio save(String[] stocks, BigDecimal[] stockPurchaseValues, Integer[] quantities, BigDecimal[] fees) {
 
         return portfolioRepository.save(UserPortfolio.builder()
                         .email("teste@teste.com")
-                        .stockInfos(buildStockInfos(stocks, stockValues, quantities, fees))
+                        .password("teste1234@")
+                        .stockInfos(buildStockInfos(stocks, stockPurchaseValues, quantities, fees))
                         .build());
     }
 
-    private List<StockInfo> buildStockInfos(String[] stocks, BigDecimal[] stockValues, Integer[] quantities, BigDecimal[] fees) {
+    private List<StockInfo> buildStockInfos(String[] stocks, BigDecimal[] stockPurchaseValues, Integer[] quantities, BigDecimal[] fees) {
         List<StockInfo> stockInfos = new ArrayList<>();
 
         int length = stocks.length;
@@ -33,7 +34,7 @@ public class PortfolioService {
             stockInfos.add(StockInfo
                     .builder()
                     .stock(stocks[i])
-                    .stockValues(stockValues[i])
+                    .stockPurchaseValue(stockPurchaseValues[i])
                     .quantity(quantities[i])
                     .fees(fees[i])
                     .build());

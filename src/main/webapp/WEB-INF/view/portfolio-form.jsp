@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="/resources/css/bootstrap.css" />
 <link href="/resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/resources/css/portfolio-form.css" rel="stylesheet" type="text/css" media="all" />
 <script src="/resources/js/script.js"></script>
 
 <!DOCTYPE html>
@@ -17,10 +18,10 @@
         <header>
             <div class="topnav">
                 <a class="active" href="/">Your Stock Portfolio</a>
-                <a href="/">Logout</a>
+                <a href="/logout">Logout</a>
             </div>
         </header>
-        <div class="container">
+        <div class="container total-center">
             <%--@elvariable id="stockInfo" type="br.com.stockportfoliovisualization.model.StockInfo"--%>
             <form:form servletRelativeAction="/portfolio" method="POST">
                 <div class="stock-info-rows" id="stock-info-row">

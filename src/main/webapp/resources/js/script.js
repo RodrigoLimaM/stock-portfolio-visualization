@@ -17,18 +17,18 @@ function appendRow() {
     inputStock.required = true;
 
     let labelStockValue = document.createElement('label');
-    labelStockValue.textContent = 'Stock Value';
+    labelStockValue.textContent = 'Stock Purchase Value';
     labelStockValue.className = 'col-sm-auto'
 
-    let inputStockValue = document.createElement('input');
-    inputStockValue.className = 'form-control text-center';
-    inputStockValue.name = 'stockValue';
-    inputStockValue.type = 'number';
-    inputStockValue.step = '0.01';
-    inputStockValue.placeholder = 'ex: 10,98';
-    inputStockValue.required = true;
+    let inputStockPurchaseValue = document.createElement('input');
+    inputStockPurchaseValue.className = 'form-control text-center';
+    inputStockPurchaseValue.name = 'stockPurchaseValue';
+    inputStockPurchaseValue.type = 'number';
+    inputStockPurchaseValue.step = '0.01';
+    inputStockPurchaseValue.placeholder = 'ex: 10,98';
+    inputStockPurchaseValue.required = true;
 
-    inputStockValue.addEventListener('keyup', function(){
+    inputStockPurchaseValue.addEventListener('keyup', function(){
         validateDecimalPlaces(this);
     })
 
@@ -64,7 +64,7 @@ function appendRow() {
     rowItemElementDiv.appendChild(labelStock)
     rowItemElementDiv.appendChild(inputStock);
     rowItemElementDiv.appendChild(labelStockValue);
-    rowItemElementDiv.appendChild(inputStockValue);
+    rowItemElementDiv.appendChild(inputStockPurchaseValue);
     rowItemElementDiv.appendChild(labelQuantity)
     rowItemElementDiv.appendChild(inputQuantity);
     rowItemElementDiv.appendChild(labelFees);

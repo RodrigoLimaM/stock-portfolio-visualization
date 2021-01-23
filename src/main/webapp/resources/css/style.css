@@ -39,24 +39,10 @@ body {
     color: white;
 }
 
-.stock-info-rows {
-    padding-bottom: 1%;
-}
-
-.stock-info-row-item {
-    padding-top: 3%;
-    display: flex;
-}
-
 label {
     display: inline-block;
     text-align: center;
     padding-top: calc(0.375rem + 1px);
     padding-bottom: calc(0.375rem + 1px);
     margin-bottom: 0;
-}
-
-.add-row-button {
-    padding-left: 88%;
-    padding-bottom: 3%;
 }

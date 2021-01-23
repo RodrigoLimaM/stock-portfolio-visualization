@@ -19,7 +19,7 @@ public class StockInfo {
 
     private String stock;
 
-    private BigDecimal stockValues;
+    private BigDecimal stockPurchaseValue;
 
     private Integer quantity;
 
