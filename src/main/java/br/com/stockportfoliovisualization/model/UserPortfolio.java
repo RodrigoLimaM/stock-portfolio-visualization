@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -12,12 +13,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
 @Document(collection = "portfolios")
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,7 +35,17 @@ public class UserPortfolio implements UserDetails {
 
     private String name;
 
+    @Field(name = "stock_infos")
     private List<StockInfo> stockInfos;
+
+    @Field(name = "total_spent_value")
+    private BigDecimal totalSpentValue;
+
+    @Field(name = "all_stocks_current_value")
+    private BigDecimal allStocksCurrentValue;
+
+    @Field(name = "current_profit")
+    private BigDecimal currentProfit;
 
     @CreatedDate
     @Field(name = "creation_date")

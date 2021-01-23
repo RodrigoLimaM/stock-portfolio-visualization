@@ -18,10 +18,12 @@ public class PortfolioMongoTemplateRepository {
     MongoTemplate mongoTemplate;
 
     public UserPortfolio pushStockInfosBy_Id(String _id, List<StockInfo> stockInfos) {
-        Update update = new Update();
-        stockInfos.forEach(stockInfo -> update.push("stockInfos", stockInfo));
         Criteria criteria = Criteria.where("_id").is(_id);
-        mongoTemplate.updateFirst(Query.query(criteria), update, "portfolios");
+        stockInfos.forEach(stockInfo -> {
+            Update update = new Update();
+            update.push("stock_infos", stockInfo);
+            mongoTemplate.updateFirst(Query.query(criteria), update, "portfolios");
+        });
 
         return mongoTemplate.findOne(Query.query(criteria), UserPortfolio.class);
     }

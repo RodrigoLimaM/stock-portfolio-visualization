@@ -4,11 +4,13 @@ import br.com.stockportfoliovisualization.config.exception.UserAlreadyExistsExce
 import br.com.stockportfoliovisualization.model.StockInfo;
 import br.com.stockportfoliovisualization.model.UserDTO;
 import br.com.stockportfoliovisualization.model.UserPortfolio;
+import br.com.stockportfoliovisualization.model.mapper.PortfolioMapper;
 import br.com.stockportfoliovisualization.repository.PortfolioMongoTemplateRepository;
 import br.com.stockportfoliovisualization.repository.PortfolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +28,18 @@ public class PortfolioService {
     @Autowired
     PortfolioMongoTemplateRepository portfolioMongoTemplateRepository;
 
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    @Autowired
+    PortfolioMapper portfolioMapper;
+
+    @Autowired
+    PortfolioCalculator portfolioCalculator;
 
     public UserPortfolio updatePortfolioStocks(String[] stocks, BigDecimal[] stockPurchaseValues, Integer[] quantities, BigDecimal[] fees) {
 
-        return portfolioMongoTemplateRepository.pushStockInfosBy_Id(this.getCustomerId(), buildStockInfos(stocks, stockPurchaseValues, quantities, fees));
+        return portfolioMongoTemplateRepository.pushStockInfosBy_Id(this.getCurrent_Id(), this.buildStockInfos(stocks, stockPurchaseValues, quantities, fees));
     }
 
-    private String getCustomerId() {
+    private String getCurrent_Id() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             Object principal = auth.getPrincipal();
@@ -64,14 +70,19 @@ public class PortfolioService {
 
     public UserPortfolio registerUser(UserDTO userDTO) {
         if(!portfolioRepository.existsByEmail(userDTO.getEmail()))
-            return portfolioRepository.save(UserPortfolio.builder()
-                    .name(userDTO.getName())
-                    .email(userDTO.getEmail())
-                    .password(encoder.encode(userDTO.getPassword()))
-                    .stockInfos(Collections.emptyList())
-                    .build());
+            return portfolioRepository.save(portfolioMapper.mapUserDTOToUserPortfolio(userDTO));
         else
             throw new UserAlreadyExistsException();
 
+    }
+
+    public UserPortfolio getUserPortfolioByCurrent_Id() {
+        return portfolioCalculator.buildCalculatedPortfolio(
+                portfolioRepository.findById(this.getCurrent_Id())
+                        .orElseThrow(() -> {
+                            throw new UsernameNotFoundException("");
+                        }
+                        )
+        );
     }
 }

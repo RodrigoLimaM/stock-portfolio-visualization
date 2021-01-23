@@ -30,8 +30,9 @@ public class PortfolioController {
                                     @RequestParam("quantity") Integer[] quantities,
                                     @RequestParam("fees") BigDecimal[] fees) {
 
-        return new ModelAndView("home")
-                .addObject("userPortfolio",
-                        portfolioService.updatePortfolioStocks(stocks, stockPurchaseValues, quantities, fees));
+        portfolioService.updatePortfolioStocks(stocks, stockPurchaseValues, quantities, fees);
+
+        return new ModelAndView("redirect:/");
+
     }
 }

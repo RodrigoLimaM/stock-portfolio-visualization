@@ -32,6 +32,7 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-web'
 	implementation 'org.springframework.security:spring-security-core'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
 	compile group: 'javax.servlet', name: 'jstl', version: '1.2'

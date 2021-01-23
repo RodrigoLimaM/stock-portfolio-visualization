@@ -9,3 +9,7 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://root:${MONGO_PASSWORD}@cluster0.gkat2.gcp.mongodb.net/stock-portfolio-visualization?retryWrites=true&w=majority
+
+hg-finance:
+  url: https://api.hgbrasil.com/
+  key: ${HG_FINANCE_KEY}
