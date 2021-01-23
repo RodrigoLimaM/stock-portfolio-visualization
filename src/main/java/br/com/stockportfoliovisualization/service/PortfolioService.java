@@ -3,8 +3,11 @@ package br.com.stockportfoliovisualization.service;
 import br.com.stockportfoliovisualization.model.StockInfo;
 import br.com.stockportfoliovisualization.model.UserDTO;
 import br.com.stockportfoliovisualization.model.UserPortfolio;
+import br.com.stockportfoliovisualization.repository.PortfolioMongoTemplateRepository;
 import br.com.stockportfoliovisualization.repository.PortfolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +22,25 @@ public class PortfolioService {
     @Autowired
     PortfolioRepository portfolioRepository;
 
+    @Autowired
+    PortfolioMongoTemplateRepository portfolioMongoTemplateRepository;
+
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public UserPortfolio save(String[] stocks, BigDecimal[] stockPurchaseValues, Integer[] quantities, BigDecimal[] fees) {
+    public UserPortfolio updatePortfolioStocks(String[] stocks, BigDecimal[] stockPurchaseValues, Integer[] quantities, BigDecimal[] fees) {
 
-        return portfolioRepository.save(UserPortfolio.builder()
-                        .email("teste@teste.com")
-                        .password("teste1234@")
-                        .stockInfos(buildStockInfos(stocks, stockPurchaseValues, quantities, fees))
-                        .build());
+        return portfolioMongoTemplateRepository.pushStockInfosBy_Id(this.getCustomerId(), buildStockInfos(stocks, stockPurchaseValues, quantities, fees));
+    }
+
+    private String getCustomerId() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            Object principal = auth.getPrincipal();
+            if (principal instanceof UserPortfolio) {
+                return ((UserPortfolio) principal).get_id();
+            }
+        }
+        return null;
     }
 
     private List<StockInfo> buildStockInfos(String[] stocks, BigDecimal[] stockPurchaseValues, Integer[] quantities, BigDecimal[] fees) {

@@ -24,6 +24,8 @@ import java.util.List;
 @Builder
 public class UserPortfolio implements UserDetails {
 
+    private String _id;
+
     private String email;
 
     private String password;

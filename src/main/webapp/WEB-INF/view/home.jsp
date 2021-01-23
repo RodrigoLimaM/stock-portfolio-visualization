@@ -22,7 +22,7 @@
         </div>
     </header>
         <div class="container">
-            ${portfolioInfo }
+            ${userPortfolio }
         </div>
     </body>
 </html>

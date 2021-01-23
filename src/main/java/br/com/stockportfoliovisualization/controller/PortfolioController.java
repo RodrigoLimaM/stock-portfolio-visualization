@@ -25,12 +25,13 @@ public class PortfolioController {
 
     //TODO
     @PostMapping
-    public ModelAndView savePortfolioInfo(@RequestParam("stock") String[] stocks,
+    public ModelAndView updatePortfolioStocks(@RequestParam("stock") String[] stocks,
                                     @RequestParam("stockPurchaseValue") BigDecimal[] stockPurchaseValues,
                                     @RequestParam("quantity") Integer[] quantities,
                                     @RequestParam("fees") BigDecimal[] fees) {
 
         return new ModelAndView("home")
-                .addObject("portfolioInfo", portfolioService.save(stocks, stockPurchaseValues, quantities, fees));
+                .addObject("userPortfolio",
+                        portfolioService.updatePortfolioStocks(stocks, stockPurchaseValues, quantities, fees));
     }
 }
