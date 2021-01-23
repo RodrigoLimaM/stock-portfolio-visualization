@@ -25,11 +25,11 @@
                 <form:form servletRelativeAction="/login" method="POST">
                     <div class="form-group">
                         <label class="col-sm-auto">E-mail</label>
-                        <input name="username" type="text" class="form-control text-center"/>
+                        <input required="true" name="username" type="email" class="form-control text-center"/>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-auto">Password</label>
-                        <input name="password" type="password" class="form-control text-center"/>
+                        <input required="true" name="password" type="password" class="form-control text-center"/>
                     </div>
                     <button type="submit" class="btn btn-success btn-lg btn-block">Sign In</button>
                 </form:form>

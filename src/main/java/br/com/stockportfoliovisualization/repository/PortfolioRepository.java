@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface PortfolioRepository extends MongoRepository<UserPortfolio, String> {
 
     Optional<UserPortfolio> findByEmail(String email);
+
+    boolean existsByEmail(String email);
 }

@@ -1,5 +1,6 @@
 package br.com.stockportfoliovisualization.service;
 
+import br.com.stockportfoliovisualization.config.exception.UserAlreadyExistsException;
 import br.com.stockportfoliovisualization.model.StockInfo;
 import br.com.stockportfoliovisualization.model.UserDTO;
 import br.com.stockportfoliovisualization.model.UserPortfolio;
@@ -62,11 +63,15 @@ public class PortfolioService {
     }
 
     public UserPortfolio registerUser(UserDTO userDTO) {
-        return portfolioRepository.save(UserPortfolio.builder()
-                .name(userDTO.getName())
-                .email(userDTO.getEmail())
-                .password(encoder.encode(userDTO.getPassword()))
-                .stockInfos(Collections.emptyList())
-                .build());
+        if(!portfolioRepository.existsByEmail(userDTO.getEmail()))
+            return portfolioRepository.save(UserPortfolio.builder()
+                    .name(userDTO.getName())
+                    .email(userDTO.getEmail())
+                    .password(encoder.encode(userDTO.getPassword()))
+                    .stockInfos(Collections.emptyList())
+                    .build());
+        else
+            throw new UserAlreadyExistsException();
+
     }
 }

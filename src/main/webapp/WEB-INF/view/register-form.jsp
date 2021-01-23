@@ -27,15 +27,15 @@
                 <form:form action="${s:mvcUrl('RC#registerUser').build()}" method="POST" modelAttribute="userDTO">
                     <div class="form-group">
                         <label class="col-sm-auto">Name</label>
-                        <form:input path="name" cssClass="form-control text-center"/>
+                        <input required="true" name="name" type="text" class="form-control text-center"/>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-auto">E-mail</label>
-                        <form:input path="email" cssClass="form-control text-center"/>
+                        <input required="true" name="email" type="email" class="form-control text-center"/>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-auto">Password</label>
-                        <input:password path="password" cssClass="form-control text-center"/>
+                        <input required="true" name="password" type="password" class="form-control text-center"/>
                     </div>
                     <button type="submit" class="btn btn-success btn-lg btn-block">Sign Up</button>
                 </form:form>
