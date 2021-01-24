@@ -9,6 +9,9 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://root:${MONGO_PASSWORD}@cluster0.gkat2.gcp.mongodb.net/stock-portfolio-visualization?retryWrites=true&w=majority
+  cache:
+    caffeine:
+      spec: expireAfterWrite=60m
 
 hg-finance:
   url: https://api.hgbrasil.com/
