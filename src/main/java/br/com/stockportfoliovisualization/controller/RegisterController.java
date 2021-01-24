@@ -1,7 +1,6 @@
 package br.com.stockportfoliovisualization.controller;
 
 import br.com.stockportfoliovisualization.model.UserDTO;
-import br.com.stockportfoliovisualization.model.UserPortfolio;
 import br.com.stockportfoliovisualization.service.PortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

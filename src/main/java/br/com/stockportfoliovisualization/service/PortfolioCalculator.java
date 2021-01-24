@@ -1,11 +1,9 @@
 package br.com.stockportfoliovisualization.service;
 
-import br.com.stockportfoliovisualization.client.HGFinanceClient;
 import br.com.stockportfoliovisualization.model.StockInfo;
 import br.com.stockportfoliovisualization.model.UserPortfolio;
+import br.com.stockportfoliovisualization.repository.PortfolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,23 +12,15 @@ import java.util.List;
 @Service
 public class PortfolioCalculator {
 
-    private static final String ONLY_RESULTS = "only_results";
-
     @Autowired
-    HGFinanceClient hgFinanceClient;
+    PortfolioRepository portfolioRepository;
 
-    @Value("${hg-finance.key}")
-    String key;
-
-    @Cacheable(value = "portfolio", key = "#userPortfolio._id")
     public UserPortfolio buildCalculatedPortfolio(UserPortfolio userPortfolio) {
-        System.out.println("BATEU AQUI");
         List<StockInfo> stockInfos = userPortfolio.getStockInfos();
 
         stockInfos.forEach(stockInfo -> {
-            String stockName = stockInfo.getStock();
             stockInfo.setStockTotalPurchaseValue(stockInfo.getStockPurchaseValue().multiply(BigDecimal.valueOf(stockInfo.getQuantity())));
-            stockInfo.setCurrentStockValue(hgFinanceClient.getStockPrice(key, stockName, ONLY_RESULTS).get(stockName.toUpperCase()).getPrice());
+            stockInfo.setCurrentStockValue(portfolioRepository.getCurrentStockValue(stockInfo.getStock().toUpperCase()));
             stockInfo.setCurrentTotalStockValue(stockInfo.getCurrentStockValue().multiply(BigDecimal.valueOf(stockInfo.getQuantity())));
             stockInfo.setTotalSpentValue(stockInfo.getStockTotalPurchaseValue().add(stockInfo.getFees()));
         });

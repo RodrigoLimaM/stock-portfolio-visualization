@@ -6,7 +6,7 @@ import br.com.stockportfoliovisualization.model.UserDTO;
 import br.com.stockportfoliovisualization.model.UserPortfolio;
 import br.com.stockportfoliovisualization.model.mapper.PortfolioMapper;
 import br.com.stockportfoliovisualization.repository.PortfolioMongoTemplateRepository;
-import br.com.stockportfoliovisualization.repository.PortfolioRepository;
+import br.com.stockportfoliovisualization.repository.PortfolioMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,7 +21,7 @@ import java.util.List;
 public class PortfolioService {
 
     @Autowired
-    PortfolioRepository portfolioRepository;
+    PortfolioMongoRepository portfolioMongoRepository;
 
     @Autowired
     PortfolioMongoTemplateRepository portfolioMongoTemplateRepository;
@@ -67,8 +67,8 @@ public class PortfolioService {
     }
 
     public UserPortfolio registerUser(UserDTO userDTO) {
-        if(!portfolioRepository.existsByEmail(userDTO.getEmail()))
-            return portfolioRepository.save(portfolioMapper.mapUserDTOToUserPortfolio(userDTO));
+        if(!portfolioMongoRepository.existsByEmail(userDTO.getEmail()))
+            return portfolioMongoRepository.save(portfolioMapper.mapUserDTOToUserPortfolio(userDTO));
         else
             throw new UserAlreadyExistsException();
 
@@ -76,7 +76,7 @@ public class PortfolioService {
 
     public UserPortfolio getUserPortfolioByCurrent_Id() {
         return portfolioCalculator.buildCalculatedPortfolio(
-                portfolioRepository.findById(this.getCurrent_Id())
+                portfolioMongoRepository.findById(this.getCurrent_Id())
                         .orElseThrow(() -> {
                             throw new UsernameNotFoundException("");
                         }

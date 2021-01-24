@@ -1,13 +1,30 @@
 package br.com.stockportfoliovisualization.repository;
 
-import br.com.stockportfoliovisualization.model.UserPortfolio;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import br.com.stockportfoliovisualization.client.HGFinanceClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.math.BigDecimal;
 
-public interface PortfolioRepository extends MongoRepository<UserPortfolio, String> {
+@Repository
+public class PortfolioRepository {
 
-    Optional<UserPortfolio> findByEmail(String email);
+    private static final String ONLY_RESULTS = "only_results";
 
-    boolean existsByEmail(String email);
+    @Autowired
+    HGFinanceClient hgFinanceClient;
+
+    @Value("${hg-finance.key}")
+    String key;
+
+    @Cacheable(value = "currentStockValue", key = "#stockName")
+    public BigDecimal getCurrentStockValue(String stockName) {
+
+        return hgFinanceClient
+                .getStockPrice(key, stockName, ONLY_RESULTS).
+                        get(stockName)
+                .getPrice();
+    }
 }

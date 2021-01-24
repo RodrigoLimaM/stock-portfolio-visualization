@@ -10,12 +10,12 @@ import org.springframework.stereotype.Repository;
 public class UserRepository implements UserDetailsService {
 
     @Autowired
-    PortfolioRepository portfolioRepository;
+    PortfolioMongoRepository portfolioMongoRepository;
 
 
     @Override
     public UserPortfolio loadUserByUsername(String email) throws UsernameNotFoundException {
-        return portfolioRepository.findByEmail(email)
+        return portfolioMongoRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User " +email +" not found."));
     }
 }
