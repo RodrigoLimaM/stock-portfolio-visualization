@@ -22,19 +22,19 @@
         </div>
     </header>
         <div class="container total-center">
-            <table class="table table-hover table-success">
-                <tr>
+            <table class="table table-hover table-success text-white">
+                <tr class="bg-success">
                     <th scope="col">Código</th>
                     <th scope="col">Preço de Compra</th>
                     <th scope="col">Quantidade</th>
                     <th scope="col">Preço de Compra Total</th>
-                    <th scope="col">Preço Atual</th>
-                    <th scope="col">Preço Total</th>
+                    <th scope="col">Preço Atual*</th>
+                    <th scope="col">Preço Atual Total*</th>
                     <th scope="col">Taxas</th>
                     <th scope="col">Gasto Total</th>
                 </tr>
                 <c:forEach items="${userPortfolio.stockInfos }" var="stockInfo">
-                    <tr>
+                    <tr class="bg-success">
                         <th scope="row">${stockInfo.stock }</th>
                         <td>${stockInfo.stockPurchaseValue }</td>
                         <td>${stockInfo.quantity }</td>
