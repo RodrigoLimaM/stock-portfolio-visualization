@@ -35,7 +35,10 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-auto">Senha</label>
-                        <input required="true" name="password" type="password" class="form-control text-center"/>
+                        <input required="true" name="password" type="password"
+                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                               title="A senha deve conter ao menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um caractere especial."
+                               class="form-control text-center"/>
                     </div>
                     <button type="submit" class="btn btn-success btn-lg btn-block">Cadastrar</button>
                     <c:if test="${error ne null}">

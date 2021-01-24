@@ -13,6 +13,7 @@ spring:
     caffeine:
       spec: expireAfterWrite=60m
 
+
 hg-finance:
   url: https://api.hgbrasil.com/
   key: ${HG_FINANCE_KEY}

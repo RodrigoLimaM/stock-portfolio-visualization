@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="/resources/css/bootstrap.css" />
 <link href="/resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/resources/css/home.css" rel="stylesheet" type="text/css" media="all" />
 <script src="/resources/js/script.js"></script>
 
 <!DOCTYPE html>
@@ -20,8 +21,31 @@
             <a href="/logout">Sair</a>
         </div>
     </header>
-        <div class="container">
-            ${userPortfolio }
+        <div class="container total-center">
+            <table class="table table-hover table-success">
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Preço de Compra</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço de Compra Total</th>
+                    <th scope="col">Preço Atual</th>
+                    <th scope="col">Preço Total</th>
+                    <th scope="col">Taxas</th>
+                    <th scope="col">Gasto Total</th>
+                </tr>
+                <c:forEach items="${userPortfolio.stockInfos }" var="stockInfo">
+                    <tr>
+                        <th scope="row">${stockInfo.stock }</th>
+                        <td>${stockInfo.stockPurchaseValue }</td>
+                        <td>${stockInfo.quantity }</td>
+                        <td>${stockInfo.stockTotalPurchaseValue }</td>
+                        <td>${stockInfo.currentStockValue }</td>
+                        <td>${stockInfo.currentTotalStockValue }</td>
+                        <td>${stockInfo.fees }</td>
+                        <td>${stockInfo.totalSpentValue }</td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
     </body>
 </html>

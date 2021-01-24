@@ -17,7 +17,7 @@ function appendRow() {
     inputStock.required = true;
 
     let labelStockValue = document.createElement('label');
-    labelStockValue.textContent = 'Valor de compra';
+    labelStockValue.textContent = 'Preço de compra';
     labelStockValue.className = 'col-sm-auto'
 
     let inputStockPurchaseValue = document.createElement('input');
