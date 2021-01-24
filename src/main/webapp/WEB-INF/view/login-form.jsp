@@ -17,7 +17,7 @@
     <body>
         <header>
             <div class="topnav">
-                <a class="active" href="/">Your Stock Portfolio</a>
+                <a class="active" href="/">Minha Carteira de Ações</a>
             </div>
         </header>
         <div class="container total-center">
