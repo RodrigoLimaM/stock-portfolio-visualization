@@ -11,12 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -39,7 +37,7 @@ public class PortfolioService {
         return portfolioMongoTemplateRepository.pushStockInfosBy_Id(this.getCurrent_Id(), this.buildStockInfos(stocks, stockPurchaseValues, quantities, fees));
     }
 
-    private String getCurrent_Id() {
+    public String getCurrent_Id() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             Object principal = auth.getPrincipal();

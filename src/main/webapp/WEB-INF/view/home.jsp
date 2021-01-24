@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="/resources/css/bootstrap.css" />
 <link href="/resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script src="/resources/js/script.js"></script>
-<script src="/resources/js/login-form.js"></script>
 
 <!DOCTYPE html>
 <html>
