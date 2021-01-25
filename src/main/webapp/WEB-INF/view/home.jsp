@@ -24,7 +24,7 @@
     </header>
         <div class="table-container">
             <div class="current-profit">
-                Lucro atual: <fmt:formatNumber value="${userPortfolio.currentProfit }" type="currency" currencySymbol="R$"/>
+                Saldo atual: <fmt:formatNumber value="${userPortfolio.currentProfit }" type="currency" currencySymbol="R$"/>
             </div>
             <table class="table table-hover table-success text-white">
                 <tr class="bg-success">
