@@ -38,13 +38,20 @@ public class UserPortfolio implements UserDetails {
     @Field(name = "stock_infos")
     private List<StockInfo> stockInfos;
 
-    @Field(name = "total_spent_value")
+    private BigDecimal totalStocksPurchaseValue;
+
+    private Integer totalStocksQuantity;
+
+    private BigDecimal totalAllStocksPurchaseValue;
+
+    private BigDecimal totalFees;
+
+    private BigDecimal totalCurrentStockValue;
+
+    private BigDecimal totalAllCurrentStockValue;
+
     private BigDecimal totalSpentValue;
 
-    @Field(name = "all_stocks_current_value")
-    private BigDecimal allStocksCurrentValue;
-
-    @Field(name = "current_profit")
     private BigDecimal currentProfit;
 
     @CreatedDate

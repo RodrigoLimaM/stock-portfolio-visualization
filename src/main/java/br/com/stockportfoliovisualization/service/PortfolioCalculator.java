@@ -25,9 +25,14 @@ public class PortfolioCalculator {
             stockInfo.setTotalSpentValue(stockInfo.getStockTotalPurchaseValue().add(stockInfo.getFees()));
         });
 
+        userPortfolio.setTotalStocksPurchaseValue(stockInfos.stream().map(StockInfo::getStockPurchaseValue).reduce(BigDecimal.ZERO, BigDecimal::add));
+        userPortfolio.setTotalStocksQuantity(stockInfos.stream().map(StockInfo::getQuantity).reduce(0, Integer::sum));
+        userPortfolio.setTotalAllStocksPurchaseValue(stockInfos.stream().map(StockInfo::getStockTotalPurchaseValue).reduce(BigDecimal.ZERO, BigDecimal::add));
+        userPortfolio.setTotalFees(stockInfos.stream().map(StockInfo::getFees).reduce(BigDecimal.ZERO, BigDecimal::add));
+        userPortfolio.setTotalCurrentStockValue(stockInfos.stream().map(StockInfo::getCurrentStockValue).reduce(BigDecimal.ZERO, BigDecimal::add));
         userPortfolio.setTotalSpentValue(stockInfos.stream().map(StockInfo::getTotalSpentValue).reduce(BigDecimal.ZERO, BigDecimal::add));
-        userPortfolio.setAllStocksCurrentValue(stockInfos.stream().map(StockInfo::getCurrentTotalStockValue).reduce(BigDecimal.ZERO, BigDecimal::add));
-        userPortfolio.setCurrentProfit(userPortfolio.getAllStocksCurrentValue().subtract(userPortfolio.getTotalSpentValue()));
+        userPortfolio.setTotalAllCurrentStockValue(stockInfos.stream().map(StockInfo::getCurrentTotalStockValue).reduce(BigDecimal.ZERO, BigDecimal::add));
+        userPortfolio.setCurrentProfit(userPortfolio.getTotalAllCurrentStockValue().subtract(userPortfolio.getTotalSpentValue()));
 
         return userPortfolio;
     }

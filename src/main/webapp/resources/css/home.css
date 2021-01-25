@@ -10,6 +10,11 @@
     min-width: 75%;
 }
 
+.current-profit {
+    text-align: right;
+    font-size: 1.5rem;
+}
+
 .warning-message {
     text-align: left;
     font-size: 0.7rem;
