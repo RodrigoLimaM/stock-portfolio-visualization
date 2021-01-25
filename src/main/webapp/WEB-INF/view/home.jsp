@@ -41,7 +41,7 @@
                     <tr class="bg-success">
                         <th scope="row">${stockInfo.stock }</th>
                         <td><fmt:formatNumber value="${stockInfo.stockPurchaseValue }" type="currency" currencySymbol="R$"/></td>
-                        <td><fmt:formatNumber value="${stockInfo.quantity }" type="currency" currencySymbol="R$"/></td>
+                        <td>${stockInfo.quantity }</td>
                         <td><fmt:formatNumber value="${stockInfo.stockTotalPurchaseValue }" type="currency" currencySymbol="R$"/></td>
                         <td><fmt:formatNumber value="${stockInfo.fees }" type="currency" currencySymbol="R$"/></td>
                         <td><fmt:formatNumber value="${stockInfo.currentStockValue }" type="currency" currencySymbol="R$"/></td>
@@ -52,7 +52,7 @@
                 <tr class="bg-success">
                     <th scope="row">Totais</th>
                     <td><fmt:formatNumber value="${userPortfolio.totalStocksPurchaseValue }" type="currency" currencySymbol="R$"/></td>
-                    <td><fmt:formatNumber value="${userPortfolio.totalStocksQuantity }" type="currency" currencySymbol="R$"/></td>
+                    <td>${userPortfolio.totalStocksQuantity }</td>
                     <td><fmt:formatNumber value="${userPortfolio.totalAllStocksPurchaseValue }" type="currency" currencySymbol="R$"/></td>
                     <td><fmt:formatNumber value="${userPortfolio.totalFees }" type="currency" currencySymbol="R$"/></td>
                     <td><fmt:formatNumber value="${userPortfolio.totalCurrentStockValue }" type="currency" currencySymbol="R$"/></td>
