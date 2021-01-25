@@ -21,7 +21,7 @@
             <a href="/logout">Sair</a>
         </div>
     </header>
-        <div class="container total-center">
+        <div class="table-container">
             <table class="table table-hover table-success text-white">
                 <tr class="bg-success">
                     <th scope="col">Código</th>
@@ -46,6 +46,12 @@
                     </tr>
                 </c:forEach>
             </table>
+            <div class="warning-message">
+                *Os preços atuais das ações podem ter delay de até uma hora
+            </div>
+            <div class="add-stock-button">
+                <button href="/portfolio" type="button" class="btn btn-outline-success btn-lg btn-block">Adicionar</button>
+            </div>
         </div>
     </body>
 </html>
