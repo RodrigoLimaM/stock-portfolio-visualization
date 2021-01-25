@@ -36,6 +36,8 @@
                     <th scope="col">Preço Atual*</th>
                     <th scope="col">Preço Atual Total*</th>
                     <th scope="col">Gasto Total</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 <c:forEach items="${userPortfolio.stockInfos }" var="stockInfo">
                     <tr class="bg-success">
@@ -47,6 +49,8 @@
                         <td><fmt:formatNumber value="${stockInfo.currentStockValue }" type="currency" currencySymbol="R$"/></td>
                         <td><fmt:formatNumber value="${stockInfo.currentTotalStockValue }" type="currency" currencySymbol="R$"/></td>
                         <td><fmt:formatNumber value="${stockInfo.totalSpentValue }" type="currency" currencySymbol="R$"/></td>
+                        <td><button class="table-button">Edit</button></td>
+                        <td><button class="table-button">Remove</button></td>
                     </tr>
                 </c:forEach>
                 <tr class="bg-success">
@@ -58,6 +62,8 @@
                     <td><fmt:formatNumber value="${userPortfolio.totalCurrentStockValue }" type="currency" currencySymbol="R$"/></td>
                     <td><fmt:formatNumber value="${userPortfolio.totalAllCurrentStockValue }" type="currency" currencySymbol="R$"/></td>
                     <td><fmt:formatNumber value="${userPortfolio.totalSpentValue }" type="currency" currencySymbol="R$"/></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
             <div class="warning-message">

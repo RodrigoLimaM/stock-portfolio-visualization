@@ -30,3 +30,9 @@
 th, td {
     text-align: center;
 }
+
+.table-button {
+    background-color: white;
+    color: #28a745;
+    border-color: #28a745;
+}
