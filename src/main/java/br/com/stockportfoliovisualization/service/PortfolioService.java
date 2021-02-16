@@ -7,6 +7,7 @@ import br.com.stockportfoliovisualization.model.UserPortfolio;
 import br.com.stockportfoliovisualization.model.mapper.PortfolioMapper;
 import br.com.stockportfoliovisualization.repository.PortfolioMongoTemplateRepository;
 import br.com.stockportfoliovisualization.repository.PortfolioMongoRepository;
+import br.com.stockportfoliovisualization.repository.PortfolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,6 +32,9 @@ public class PortfolioService {
 
     @Autowired
     PortfolioCalculator portfolioCalculator;
+
+    @Autowired
+    PortfolioRepository portfolioRepository;
 
     public UserPortfolio updatePortfolioStocks(String[] stocks, BigDecimal[] stockPurchaseValues, Integer[] quantities, BigDecimal[] fees) {
 
@@ -64,13 +68,15 @@ public class PortfolioService {
         int length = stocks.length;
 
         for (int i = 0; i < length; i++) {
-            stockInfos.add(StockInfo
-                    .builder()
-                    .stock(stocks[i])
-                    .stockPurchaseValue(stockPurchaseValues[i])
-                    .quantity(quantities[i])
-                    .fees(fees[i])
-                    .build());
+            if(portfolioRepository.getCurrentStockValue(stocks[i]) != null) {
+                stockInfos.add(StockInfo
+                        .builder()
+                        .stock(stocks[i])
+                        .stockPurchaseValue(stockPurchaseValues[i])
+                        .quantity(quantities[i])
+                        .fees(fees[i])
+                        .build());
+            }
         }
 
         return stockInfos;
