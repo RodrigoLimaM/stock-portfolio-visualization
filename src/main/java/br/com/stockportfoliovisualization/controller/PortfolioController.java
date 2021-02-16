@@ -1,8 +1,10 @@
 package br.com.stockportfoliovisualization.controller;
 
+import br.com.stockportfoliovisualization.model.UserPortfolio;
 import br.com.stockportfoliovisualization.service.PortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +36,11 @@ public class PortfolioController {
 
         return new ModelAndView("redirect:/");
 
+    }
+
+    @DeleteMapping
+    public UserPortfolio deletePortfolioStockByIndex(@RequestParam Integer stockIndex) {
+
+        return portfolioService.deletePortfolioStockByIndex(stockIndex);
     }
 }

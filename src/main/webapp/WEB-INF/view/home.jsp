@@ -39,7 +39,7 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
-                <c:forEach items="${userPortfolio.stockInfos }" var="stockInfo">
+                <c:forEach items="${userPortfolio.stockInfos }" var="stockInfo" varStatus="loop">
                     <tr class="bg-success">
                         <th scope="row">${stockInfo.stock }</th>
                         <td><fmt:formatNumber value="${stockInfo.stockPurchaseValue }" type="currency" currencySymbol="R$"/></td>
@@ -50,7 +50,7 @@
                         <td><fmt:formatNumber value="${stockInfo.currentTotalStockValue }" type="currency" currencySymbol="R$"/></td>
                         <td><fmt:formatNumber value="${stockInfo.totalSpentValue }" type="currency" currencySymbol="R$"/></td>
                         <td><button class="table-button">Edit</button></td>
-                        <td><button class="table-button">Remove</button></td>
+                        <td><button class="table-button" onclick="removeStock('${loop.index}')">Remove</button></td>
                     </tr>
                 </c:forEach>
                 <tr class="bg-success">
@@ -70,7 +70,7 @@
                 *Os preços atuais das ações podem ter delay de até uma hora
             </div>
             <div class="add-stock-button">
-                <button href="/portfolio" type="button" class="btn btn-outline-success btn-lg btn-block">Adicionar</button>
+                <a href="/portfolio"><button type="button" class="btn btn-outline-success btn-lg btn-block">Adicionar</button></a>
             </div>
         </div>
     </body>

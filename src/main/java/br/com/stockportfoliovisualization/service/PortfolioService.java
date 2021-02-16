@@ -37,6 +37,16 @@ public class PortfolioService {
         return portfolioMongoTemplateRepository.pushStockInfosBy_Id(this.getCurrent_Id(), this.buildStockInfos(stocks, stockPurchaseValues, quantities, fees));
     }
 
+    public UserPortfolio deletePortfolioStockByIndex(int stockIndex) {
+        UserPortfolio userPortfolio = portfolioMongoRepository.findById(this.getCurrent_Id())
+                .orElseThrow(() -> { throw new UsernameNotFoundException(""); });
+        List<StockInfo> stockInfos = userPortfolio.getStockInfos();
+
+        stockInfos.remove(stockIndex);
+
+        return portfolioMongoRepository.save(userPortfolio);
+    }
+
     public String getCurrent_Id() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
@@ -83,4 +93,5 @@ public class PortfolioService {
                         )
         );
     }
+
 }

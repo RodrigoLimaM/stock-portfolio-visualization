@@ -73,3 +73,10 @@ function appendRow() {
     let stockInfoRow = document.getElementById('stock-info-row');
     stockInfoRow.appendChild(rowItemElementDiv);
 }
+
+function removeStock(index) {
+    fetch(window.location.origin +'/portfolio?stockIndex=' +index, {
+        method: 'DELETE'
+    }).then(response => response.json())
+        .then(() => location.reload());
+}
