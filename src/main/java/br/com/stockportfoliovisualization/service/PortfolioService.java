@@ -41,9 +41,9 @@ public class PortfolioService {
         return portfolioMongoTemplateRepository.pushStockInfosBy_Id(this.getCurrent_Id(), this.buildStockInfos(stocks, stockPurchaseValues, quantities, fees));
     }
 
-    public UserPortfolio deletePortfolioStockByIndex(int stockIndex) throws UsernameNotFoundException {
+    public UserPortfolio deletePortfolioStockByIndex(int stockIndex) {
         UserPortfolio userPortfolio = portfolioMongoRepository.findById(this.getCurrent_Id())
-                .orElseThrow(() -> { throw new UsernameNotFoundException(""); });
+                .<UsernameNotFoundException>orElseThrow(() -> { throw new UsernameNotFoundException(""); });
         List<StockInfo> stockInfos = userPortfolio.getStockInfos();
 
         stockInfos.remove(stockIndex);
@@ -90,10 +90,10 @@ public class PortfolioService {
 
     }
 
-    public UserPortfolio getUserPortfolioByCurrent_Id() throws UsernameNotFoundException {
+    public UserPortfolio getUserPortfolioByCurrent_Id() {
         return portfolioCalculator.buildCalculatedPortfolio(
                 portfolioMongoRepository.findById(this.getCurrent_Id())
-                        .orElseThrow(() -> {
+                        .<UsernameNotFoundException>orElseThrow(() -> {
                             throw new UsernameNotFoundException("");
                         }
                         )
