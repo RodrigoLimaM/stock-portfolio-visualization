@@ -6,7 +6,14 @@ plugins {
 
 group = 'br.com.stock-portfolio-visualization'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '8'
+
+task fatJar(type: Jar) {
+	manifest {
+		attributes 'Main-Class': 'br.com.stockportfoliovisualization.StockPortfolioVisualizationApplication'
+	}
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
 
 configurations {
 	compileOnly {
@@ -41,6 +48,7 @@ dependencies {
 	compile group: 'net.sargue', name: 'java-time-jsptags', version: '1.1.4'
 
 	compileOnly 'org.projectlombok:lombok'
+	compile 'ch.qos.logback:logback-classic:1.1.2'
 
 	annotationProcessor 'org.projectlombok:lombok'
 
